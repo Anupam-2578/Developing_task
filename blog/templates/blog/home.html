@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+    <title>Codeforces Rating Leaderboard</title>
+</head>
+<body>
+    <header>
+        <h1>Codeforces Rating Leaderboard</h1>
+        <input type="text" id="search" placeholder="Search by username">
+    </header>
+    <main>
+        <table id="leaderboard">
+            <thead>
+                <tr>
+                    <th>Si.no</th>
+                    <th>Rank</th>
+                    <th>Username</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in data.result%}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ user.rank }}</td>
+                        <td>{{ user.handle }}</td>
+                        <td>{{ user.rating }}</td>
+                    </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    
+</body>
+</html>
